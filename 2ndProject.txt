@@ -1,0 +1,3 @@
+This is my second springboot project
+In this I have taken the default value of a and b = 0.
+url:Localhost:8080/hello?a=4&b=7
