@@ -14,9 +14,28 @@ public class DemoApplication {
 	}
 
 	@GetMapping("/calculator")
-	public String calculate(@RequestParam(value = "a", defaultValue = "0") int a,
-					  @RequestParam(value = "b", defaultValue = "0") int b) {
-		int result = a + b;
-		return String.format("%d",result);
+	public String calculator(@RequestParam(value = "a", defaultValue = "0") int a,
+							 @RequestParam(value = "b", defaultValue = "0") int b,
+							 @RequestParam(value = "o", defaultValue = "+") String operation) {
+		int result;
+		switch (operation) {
+			case "-":
+				result = a - b;
+				break;
+			case "*":
+				result = a * b;
+				break;
+			case "/":
+				if (b == 0) {
+					return "Error: Division by zero";
+				}
+				result = a / b;
+				break;
+			case "+":
+			default:
+				result = a + b;
+				break;
+		}
+		return String.format("%d", result);
 	}
 }
