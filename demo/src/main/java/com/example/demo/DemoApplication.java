@@ -13,8 +13,8 @@ public class DemoApplication {
 		SpringApplication.run(DemoApplication.class, args);
 	}
 
-	@GetMapping("/hello")
-	public String hello(@RequestParam(value = "a", defaultValue = "0") int a,
+	@GetMapping("/calculator")
+	public String calculate(@RequestParam(value = "a", defaultValue = "0") int a,
 					  @RequestParam(value = "b", defaultValue = "0") int b) {
 		int result = a + b;
 		return String.format("%d",result);
