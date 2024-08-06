@@ -30,7 +30,7 @@ public class DemoApplication {
 				break;
 			case "/":
 				if (b == 0) {
-					return "Error: Division by zero";
+					return "Error: Division by 0";
 				}
 				result = a / b;
 				break;
