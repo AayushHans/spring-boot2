@@ -6,6 +6,9 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.util.ArrayList;
+import java.util.List;
+
 @SpringBootApplication
 @RestController
 public class DemoApplication {
@@ -37,5 +40,24 @@ public class DemoApplication {
 				break;
 		}
 		return String.format("%d", result);
+	}
+
+	@GetMapping("/fibonacci")
+	public String fibonacci(@RequestParam(value = "z", defaultValue = "10") int z) {
+		if (z < 0) {
+			return "[]";
+		}
+		List<Integer> fibonacciSeries = new ArrayList<>();
+		int a = 0, b = 1;
+		if (z >= 0) {
+			fibonacciSeries.add(a);
+		}
+		while (b <= z) {
+			fibonacciSeries.add(b);
+			int next = a + b;
+			a = b;
+			b = next;
+		}
+		return fibonacciSeries.toString();
 	}
 }
